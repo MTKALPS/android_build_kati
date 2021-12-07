@@ -707,6 +707,8 @@ class FindEmulatorImpl : public FindEmulator {
             !HasPrefix(s, "/") &&
             !HasPrefix(s, ".repo") &&
             !HasPrefix(s, ".git") &&
+            !HasPrefix(s, ".out") &&
+            !HasPrefix(s, "out_") &&
             !HasPrefix(s, "out"));
   }
 
@@ -855,6 +857,8 @@ class FindEmulatorImpl : public FindEmulator {
           !strcmp(ent->d_name, "..") ||
           !strcmp(ent->d_name, ".repo") ||
           !strcmp(ent->d_name, ".git") ||
+          HasPrefix(ent->d_name, ".out_") ||
+          HasPrefix(ent->d_name, "out_") ||
           !strcmp(ent->d_name, "out"))
         continue;
 
